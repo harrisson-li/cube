@@ -5,19 +5,16 @@ from business.init import *
 from ddt import ddt, unpack, data
 
 
-@ddt
 # class TestLogin(TestBase):
 class TestLogin:
     # @pytest.mark.usefixtures('setup_teardown_2')
-    # @setup_teardown_wrap
-    @data(['aaa', 'bbb'])
-    @unpack
     # @pytest.mark.parametrize("aaa, bbb", [(1, 2), (3, 4)])
     # def test_individual_login_and_logout(self, aaa, bbb):
-    def test_individual_login_and_logout(self, aaa, bbb):
+    @setup_teardown_wrap
+    def test_individual_login_and_logout(self):
         # print(setup_teardown)
-        print(aaa)
-        print(bbb)
+        # print(aaa)
+        # print(bbb)
         username = '李志超'
         individual_login()
         verify_username(username)

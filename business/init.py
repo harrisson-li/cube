@@ -14,22 +14,22 @@ instance = Container()
 
 
 class TestBase:
-    # def setup_class(self):
-    #     instance.driver = webdriver.Chrome()
-    #     instance.driver.maximize_window()
-    #
-    # def teardown_class(self):
-    #     instance.driver.close()
+    def setup_class(self):
+        instance.driver = webdriver.Chrome()
+        instance.driver.maximize_window()
+
+    def teardown_class(self):
+        instance.driver.close()
     pass
 
 
-# @pytest.fixture(params=[1, 2, 3, 4], ids=['a', 'b', 'c', 'd'])
-# def setUp_tearDown_1(request):
-#     instance.driver = webdriver.Chrome()
-#     instance.driver.maximize_window()
-#     yield
-#     instance.driver.close()
-#     print(request.param)
+@pytest.fixture(params=[1, 2, 3, 4], ids=['a', 'b', 'c', 'd'])
+def setup_teardown_1(request):
+    instance.driver = webdriver.Chrome()
+    instance.driver.maximize_window()
+    yield
+    instance.driver.close()
+    print(request.param)
 
 
 # @pytest.fixture(scope='function', autouse=True, params=PARAMS, ids=IDS)
